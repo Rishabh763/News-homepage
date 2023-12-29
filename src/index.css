@@ -1,13 +1,478 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: Inter;
+  background-color: var(--clr-neutral-100);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root{
+    --clr-primary-700 : hsl(35, 77%, 62%);
+    --clr-primary-400 : hsl(5, 85%, 63%);
+
+    --clr-neutral-100: hsl(36, 100%, 99%);
+    --clr-neutral-200: hsl(233, 8%, 79%);
+    --clr-neutral-400 : hsl(236, 13%, 42%);
+    --clr-neutral-900: hsl(240, 100%, 5%);
+
+    --font-size: 1rem;
+
+    --max-width:1440px;
+}
+
+main{
+    max-width: var(--max-width);
+    width: 100%;
+    margin-inline: auto;
+    background-color: var(--clr-neutral-100);
+    padding-inline: 3rem;
+}
+
+nav{
+    width: 100%;
+    height: 10vh;
+
+    padding-block: 3rem;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav>.nleft>img{
+    width: 5rem;
+    color: var(--clr-neutral-900);
+}
+
+
+ul{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+ul>il>a{
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color:  var(--clr-neutral-400);
+    transition: all ease-in-out 0.2s;
+}
+
+ul>il>a:hover{
+    color: var(--clr-primary-700);
+
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 2rem 0;
+    gap: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.nav-links li a {
+    color: var(--clr-fs);
+    text-decoration: none;
+    margin: 0 0.7vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: var(--clr-primary-400);
+}
+
+.nav-links li {
+    position: relative;
+}
+
+
+
+
+/*Styling Hamburger Icon*/
+.hamburger div {
+    width: 40px;
+    height: 3px;
+    background: black;
+    margin: 6px;
+    transition: all 0.3s ease;
+}
+
+.hamburger {
+    display: none;
+}
+
+/*Stying for small screens*/
+@media screen and (max-width: 1024px) {
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 0%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-block: 15vh;
+        
+        
+        clip-path: circle(0px at 95% 0%);
+        -webkit-clip-path: circle(0px at 95% 0%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    
+    .nav-links.open {
+        background-color: #000000c3;
+        
+        clip-path: circle(2000px at 90% -0%);
+        -webkit-clip-path: circle(2000px at 90% -0%);
+        pointer-events: all;
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .nav-links li:nth-child(1) {
+        transition: all 0.5s ease 0.2s;
+    }
+
+    .nav-links li:nth-child(2) {
+        transition: all 0.5s ease 0.4s;
+    }
+
+    .nav-links li:nth-child(3) {
+        transition: all 0.5s ease 0.6s;
+    }
+
+    .nav-links li:nth-child(4) {
+        transition: all 0.5s ease 0.7s;
+    }
+
+    .nav-links li:nth-child(4) {
+        transition: all 0.5s ease 0.8s;
+    }
+
+    li.fade {
+        opacity: 1;
+    }
+}
+
+/*Animating Hamburger Icon on Click*/
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    transition: all 0.7s ease;
+    width: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.grid{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 400px auto auto ;
+    grid-template-areas: 
+    'a a d'
+    'b c d'
+    'e e e'
+    ;
+    gap: 1rem;
+}
+
+.grid>.image{
+    grid-area: a;
+
+    background-image: url(./assets/images/image-web-3-desktop.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.grid>.heading{
+    grid-area: b;
+    align-self: start;
+}
+.grid>.description{
+    grid-area: c;
+    padding: 2rem;
+}
+.grid>.news{
+    grid-area: d;
+
+    height: 100%;
+    
+    padding: 3rem 2rem;
+    background-color: var(--clr-neutral-900);
+    color: var(--clr-neutral-100);
+
+}
+.grid>.others{
+    grid-area: e;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.grid>.heading>h1{
+    font-weight: 800;
+    font-size: clamp(2rem,6vw,5rem);
+    line-height: 1.2;
+    color: var(--clr-neutral-900);
+}
+
+.grid>.description>p{
+    color: var(--clr-neutral-400);
+}
+
+.grid>.description>button{
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--clr-primary-400);
+    color: var(--clr-neutral-100);
+    padding: 0.5em 1.5em;
+    font-size: clamp(1rem,3vw,1.25rem);
+    margin-top:2rem;
+
+    transition: all ease-in-out 0.2s;
+}
+
+.grid>.description>button:hover{
+    background-color: var(--clr-neutral-900);
+}
+
+
+.grid>.news>.title{
+    color: var(--clr-primary-700);
+    font-weight: 800;
+    font-size: clamp(2.5rem,3vw,3rem);
+}
+
+.grid>.news>article{
+    margin-block: min(2.5rem,15%);
+}
+
+hr{
+    border-bottom: 1px solid var(--clr-neutral-400);
+}
+
+
+.grid>.news>article>h3{
+    font-size: clamp(1.4rem,5vw,1.6rem);
+    margin-block: 0.5rem;
+    transition: all ease-in-out 0.3s;
+}
+
+.grid>.news>article>h3:hover{
+    color: var(--clr-primary-700);
+}
+
+.grid>.news>article>p{
+    font-size: 1.125rem;
+    color: var(--clr-neutral-200);
+}
+
+
+
+
+.grid>.others>article{
+    display: flex;
+    flex: 1;
+}
+
+.grid>.others>article>img{
+    width: 30%;
+    object-fit: cover;
+
+}
+
+.grid>.others>article>.text{
+    width: 70%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.25rem;
+    color: var(--clr-neutral-200);
+}
+
+.grid>.others>article>.text>.no{
+    font-size: 2rem;
+    color: var(--clr-neutral-300);
+    font-weight: 800;
+    
+}
+
+.grid>.others>article>.text>.title{
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--clr-neutral-900);
+    transition: all ease-in-out 0.3s;
+}
+.grid>.others>article>.text>.title:hover{
+    color: var(--clr-primary-400);
+}
+
+.grid>.others>article>.text>.intro{
+    font-size: var(--font-size);
+}
+
+
+
+
+
+
+
+
+@media (max-width:1024px){
+    main{
+        padding-inline: 1rem;
+    }
+
+    /* .nright{
+        display: none;
+    } */
+
+    .grid{
+        display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: 280px auto auto auto auto auto;
+    grid-template-areas: 
+    'a'
+    'b'
+    'c'
+    'd'
+    'e'
+    ;
+    }
+    .grid>.image{
+        background-image: url(./assets/images/image-web-3-mobile.jpg);
+    }
+    .grid>.description{
+        padding: 0;
+    }
+    .grid>.description>button{
+        padding: 1em 1.5em;
+    }
+    .grid>.news{
+        padding: 1rem;
+    }
+    .grid>.others{
+        flex-direction: column;
+    }
+
+    .grid>.others>article>img{
+        width: 40%;
+    }
+
+    .grid>.others>article>.text{
+        width: 60%;
+    }
+
+}
+
+.attribution { 
+    font-size: var(--font-size); 
+    text-align: center; 
+    padding-block: 2rem;
+}
+
+.attribution a { 
+    color: var(--clr-primary-400); 
+    text-decoration: none;
 }
