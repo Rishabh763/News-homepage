@@ -4,7 +4,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Remove default margin */
@@ -18,39 +18,39 @@ figure,
 blockquote,
 dl,
 dd {
-  margin-block: 0;
+    margin-block: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
-  list-style: none;
+    list-style: none;
 }
 
 /* Set core root defaults */
 html:focus-within {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  font-family: Inter;
-  background-color: var(--clr-neutral-100);
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-family: Inter;
+    background-color: var(--clr-neutral-100);
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-  text-decoration-skip-ink: auto;
+    text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
-  display: block;
+    max-width: 100%;
+    display: block;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -58,80 +58,107 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-:root{
-    --clr-primary-700 : hsl(35, 77%, 62%);
-    --clr-primary-400 : hsl(5, 85%, 63%);
 
-    --clr-neutral-100: hsl(36, 100%, 99%);
-    --clr-neutral-200: hsl(233, 8%, 79%);
-    --clr-neutral-400 : hsl(236, 13%, 42%);
-    --clr-neutral-900: hsl(240, 100%, 5%);
 
-    --font-size: 1rem;
 
-    --max-width:1440px;
+@media (prefers-color-scheme: light) {
+    :root {
+        --clr-primary-700: hsl(35, 77%, 62%);
+        --clr-primary-400: hsl(5, 85%, 63%);
+
+        --clr-neutral-100: hsl(36, 100%, 99%);
+        --clr-neutral-200: hsl(233, 8%, 79%);
+        --clr-neutral-400: hsl(236, 13%, 42%);
+        --clr-neutral-900: hsl(240, 100%, 5%);
+
+        --font-size: 1rem;
+
+        --max-width: 1440px;
+    }
 }
 
-main{
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-primary-700: hsl(35, 77%, 42%);
+        --clr-primary-400: hsl(5, 85%, 43%);
+
+        --clr-neutral-100: hsl(240, 100%, 5%);
+        --clr-neutral-200: hsl(233, 8%, 29%);
+        --clr-neutral-400: hsl(236, 13%, 58%);
+        --clr-neutral-900: hsl(240, 100%, 99%);
+
+        --font-size: 1rem;
+
+        --max-width: 1440px;
+
+    }
+}
+
+
+main {
     max-width: var(--max-width);
     width: 100%;
     margin-inline: auto;
     background-color: var(--clr-neutral-100);
     padding-inline: 3rem;
+
 }
 
-nav{
+nav {
     width: 100%;
     height: 10vh;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0%;
+
+    background-color: var(--clr-neutral-100);
 
     padding-block: 3rem;
-    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-nav>.nleft>img{
-    width: 5rem;
-    color: var(--clr-neutral-900);
+nav>.nleft>svg{
+    fill: var(--clr-neutral-900);
 }
 
 
-ul{
+ul {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-ul>il>a{
+ul>il>a {
     text-transform: capitalize;
     text-decoration: none;
     font-size: 1.2rem;
-    color:  var(--clr-neutral-400);
+    color: var(--clr-neutral-400);
     transition: all ease-in-out 0.2s;
 }
 
-ul>il>a:hover{
+ul>il>a:hover {
     color: var(--clr-primary-700);
 
 }
@@ -146,29 +173,14 @@ ul>il>a:hover{
     text-transform: uppercase;
 }
 
-.nav-links li a {
-    color: var(--clr-fs);
-    text-decoration: none;
-    margin: 0 0.7vw;
-    transition: all 0.3s ease-in-out;
-}
-
-.nav-links li a:hover {
-    color: var(--clr-primary-400);
-}
-
-.nav-links li {
-    position: relative;
-}
-
-
 
 
 /*Styling Hamburger Icon*/
 .hamburger div {
     width: 40px;
     height: 3px;
-    background: black;
+    background: var(--clr-neutral-900);
+    border-radius: 100vw;
     margin: 6px;
     transition: all 0.3s ease;
 }
@@ -182,74 +194,50 @@ ul>il>a:hover{
 
     .hamburger {
         display: block;
-        position: absolute;
+        position: relative;
         cursor: pointer;
-        right: 0%;
-        top: 50%;
-        transform: translate(-5%, -50%);
-        z-index: 2;
+        z-index: 100;
         transition: all 0.7s ease;
     }
 
     .nav-links {
         position: fixed;
-        top: 0;
-        left: 0;
+        top: -5%;
+        right: 0;
+        z-index: 99;
 
-        
-        height: 100vh;
-        width: 100%;
+
+        height: 110vh;
+        width: 70%;
         flex-direction: column;
         justify-content: flex-start;
         padding-block: 15vh;
-        
-        
-        clip-path: circle(0px at 95% 0%);
-        -webkit-clip-path: circle(0px at 95% 0%);
+
+
+        transform: translateX(100%);
         transition: all 1s ease-out;
         pointer-events: none;
     }
-    
-    .nav-links.open {
-        background-color: #000000c3;
         
-        clip-path: circle(2000px at 90% -0%);
-        -webkit-clip-path: circle(2000px at 90% -0%);
-        pointer-events: all;
-    }
+}
+.open {
+    background-color: var(--clr-neutral-100);
+    
+    
+    transform: translateX(0%);
+    pointer-events: all;
+}
 
-    .nav-links li {
-        opacity: 0;
-    }
-
-    .nav-links li:nth-child(1) {
-        transition: all 0.5s ease 0.2s;
-    }
-
-    .nav-links li:nth-child(2) {
-        transition: all 0.5s ease 0.4s;
-    }
-
-    .nav-links li:nth-child(3) {
-        transition: all 0.5s ease 0.6s;
-    }
-
-    .nav-links li:nth-child(4) {
-        transition: all 0.5s ease 0.7s;
-    }
-
-    .nav-links li:nth-child(4) {
-        transition: all 0.5s ease 0.8s;
-    }
-
-    li.fade {
-        opacity: 1;
-    }
+@media screen and (max-width: 300px){
+   .nav-links{
+    width: 100%;
+   }
 }
 
 /*Animating Hamburger Icon on Click*/
+
 .toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
 }
 
 .toggle .line2 {
@@ -258,23 +246,23 @@ ul>il>a:hover{
 }
 
 .toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translate(-6px, -6px);
 }
 
-.grid{
+.grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: 400px auto auto ;
-    grid-template-areas: 
-    'a a d'
-    'b c d'
-    'e e e'
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 400px auto auto;
+    grid-template-areas:
+        'a a d'
+        'b c d'
+        'e e e'
     ;
     gap: 1rem;
 }
 
-.grid>.image{
+.grid>.image {
     grid-area: a;
 
     background-image: url(./assets/images/image-web-3-desktop.jpg);
@@ -282,43 +270,47 @@ ul>il>a:hover{
     background-size: cover;
     background-repeat: no-repeat;
 }
-.grid>.heading{
+
+.grid>.heading {
     grid-area: b;
     align-self: start;
 }
-.grid>.description{
+
+.grid>.description {
     grid-area: c;
     padding: 2rem;
 }
-.grid>.news{
+
+.grid>.news {
     grid-area: d;
 
     height: 100%;
-    
+
     padding: 3rem 2rem;
     background-color: var(--clr-neutral-900);
     color: var(--clr-neutral-100);
 
 }
-.grid>.others{
+
+.grid>.others {
     grid-area: e;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
 }
 
-.grid>.heading>h1{
+.grid>.heading>h1 {
     font-weight: 800;
-    font-size: clamp(2rem,6vw,5rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     line-height: 1.2;
     color: var(--clr-neutral-900);
 }
 
-.grid>.description>p{
+.grid>.description>p {
     color: var(--clr-neutral-400);
 }
 
-.grid>.description>button{
+.grid>.description>button {
     font-weight: 700;
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -326,43 +318,43 @@ ul>il>a:hover{
     background-color: var(--clr-primary-400);
     color: var(--clr-neutral-100);
     padding: 0.5em 1.5em;
-    font-size: clamp(1rem,3vw,1.25rem);
-    margin-top:2rem;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-top: 2rem;
 
     transition: all ease-in-out 0.2s;
 }
 
-.grid>.description>button:hover{
+.grid>.description>button:hover {
     background-color: var(--clr-neutral-900);
 }
 
 
-.grid>.news>.title{
+.grid>.news>.title {
     color: var(--clr-primary-700);
     font-weight: 800;
-    font-size: clamp(2.5rem,3vw,3rem);
+    font-size: clamp(2.5rem, 3vw, 3rem);
 }
 
-.grid>.news>article{
-    margin-block: min(2.5rem,15%);
+.grid>.news>article {
+    margin-block: min(2.5rem, 15%);
 }
 
-hr{
+hr {
     border-bottom: 1px solid var(--clr-neutral-400);
 }
 
 
-.grid>.news>article>h3{
-    font-size: clamp(1.4rem,5vw,1.6rem);
+.grid>.news>article>h3 {
+    font-size: clamp(1.4rem, 5vw, 1.6rem);
     margin-block: 0.5rem;
     transition: all ease-in-out 0.3s;
 }
 
-.grid>.news>article>h3:hover{
+.grid>.news>article>h3:hover {
     color: var(--clr-primary-700);
 }
 
-.grid>.news>article>p{
+.grid>.news>article>p {
     font-size: 1.125rem;
     color: var(--clr-neutral-200);
 }
@@ -370,18 +362,18 @@ hr{
 
 
 
-.grid>.others>article{
+.grid>.others>article {
     display: flex;
     flex: 1;
 }
 
-.grid>.others>article>img{
+.grid>.others>article>img {
     width: 30%;
     object-fit: cover;
 
 }
 
-.grid>.others>article>.text{
+.grid>.others>article>.text {
     width: 70%;
     padding: 1rem;
     display: flex;
@@ -391,24 +383,25 @@ hr{
     color: var(--clr-neutral-200);
 }
 
-.grid>.others>article>.text>.no{
+.grid>.others>article>.text>.no {
     font-size: 2rem;
     color: var(--clr-neutral-300);
     font-weight: 800;
-    
+
 }
 
-.grid>.others>article>.text>.title{
+.grid>.others>article>.text>.title {
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--clr-neutral-900);
     transition: all ease-in-out 0.3s;
 }
-.grid>.others>article>.text>.title:hover{
+
+.grid>.others>article>.text>.title:hover {
     color: var(--clr-primary-400);
 }
 
-.grid>.others>article>.text>.intro{
+.grid>.others>article>.text>.intro {
     font-size: var(--font-size);
 }
 
@@ -419,8 +412,8 @@ hr{
 
 
 
-@media (max-width:1024px){
-    main{
+@media (max-width:1024px) {
+    main {
         padding-inline: 1rem;
     }
 
@@ -428,51 +421,56 @@ hr{
         display: none;
     } */
 
-    .grid{
+    .grid {
         display: grid;
-    grid-template-columns: repeat(1,1fr);
-    grid-template-rows: 280px auto auto auto auto auto;
-    grid-template-areas: 
-    'a'
-    'b'
-    'c'
-    'd'
-    'e'
-    ;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: 280px auto auto auto auto auto;
+        grid-template-areas:
+            'a'
+            'b'
+            'c'
+            'd'
+            'e'
+        ;
     }
-    .grid>.image{
+
+    .grid>.image {
         background-image: url(./assets/images/image-web-3-mobile.jpg);
     }
-    .grid>.description{
+
+    .grid>.description {
         padding: 0;
     }
-    .grid>.description>button{
+
+    .grid>.description>button {
         padding: 1em 1.5em;
     }
-    .grid>.news{
+
+    .grid>.news {
         padding: 1rem;
     }
-    .grid>.others{
+
+    .grid>.others {
         flex-direction: column;
     }
 
-    .grid>.others>article>img{
+    .grid>.others>article>img {
         width: 40%;
     }
 
-    .grid>.others>article>.text{
+    .grid>.others>article>.text {
         width: 60%;
     }
 
 }
 
-.attribution { 
-    font-size: var(--font-size); 
-    text-align: center; 
+.attribution {
+    font-size: var(--font-size);
+    text-align: center;
     padding-block: 2rem;
 }
 
-.attribution a { 
-    color: var(--clr-primary-400); 
+.attribution a {
+    color: var(--clr-primary-400);
     text-decoration: none;
 }
