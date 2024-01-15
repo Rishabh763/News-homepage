@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
+::selection{
+    background-color: var(--clr-neutral-900);
+    color: var(--clr-neutral-100);
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -291,6 +296,8 @@ ul>il>a:hover {
     color: var(--clr-neutral-100);
 
 }
+
+
 
 .grid>.others {
     grid-area: e;
