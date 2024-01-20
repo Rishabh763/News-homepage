@@ -1,6 +1,5 @@
 import { useLayoutEffect} from 'react';
 
-import './App.css';
 import Layout from './component/Layout';
 import Navbar from './component/Navbar';
 
